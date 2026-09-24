@@ -8,16 +8,16 @@ function AppLayout() {
   const isLoading = navigation.state === "loading";
 
   return (
-    <div className="layout">
+    <div className="h-dvh grid grid-rows-[auto_1fr_auto] gap-y-2">
       {isLoading && <Loader />}
 
       <Header />
 
-      <main>
-        <h1>Content</h1>
-      </main>
-      <Outlet />
-
+      <div className="overflow-scroll scrollbar-none">
+        <main className="mx-auto ">
+          <Outlet />
+        </main>
+      </div>
       <CartOverview />
     </div>
   );

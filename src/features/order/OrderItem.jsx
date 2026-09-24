@@ -5,9 +5,9 @@ function OrderItem({ item, isLoadingIngredients, ingredients }) {
   const { quantity, name, totalPrice } = item;
 
   return (
-    <li>
-      <div>
-        <p>
+    <li className="p-1">
+      <div className="flex justify-between">
+        <p className="text-yellow-500 font-semibold">
           <span>{quantity}&times;</span> {name}
         </p>
         <p>{formatCurrency(totalPrice)}</p>
