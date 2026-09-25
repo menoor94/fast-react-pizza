@@ -3,6 +3,7 @@ import Button from "../../ui/Button";
 import CartItem from "./CartItem";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "./cartSlice";
+import EmptyCart from "./EmptyCart";
 
 function Cart() {
   const cart = useSelector((state) => state.cartReducer.cart);
@@ -12,6 +13,8 @@ function Cart() {
   function clearCartHandler() {
     dispatch(clearCart());
   }
+
+  if (!cart.length) return <EmptyCart />;
 
   return (
     <div>

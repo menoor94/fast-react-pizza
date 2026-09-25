@@ -3,11 +3,14 @@ import PropTypes from "prop-types";
 import Button from "../../ui/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, incItemQuantity } from "../cart/cartSlice";
+import UpdateItemQuantity from "../cart/UpdateItemQuantity";
 
 function MenuItem({ pizza }) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartReducer.cart);
+
+  const itemQuantity = cart.find((item) => item.pizzaId === id)?.quantity ?? 0;
 
   function clickHandler() {
     const newItem = {
@@ -24,7 +27,7 @@ function MenuItem({ pizza }) {
   }
 
   return (
-    <li onClick={clickHandler} className="flex gap-5 leading-7 p-2">
+    <li className="flex gap-5 leading-7 p-2">
       <img
         className={`h-32 ${soldOut ? "grayscale opacity-70" : ""}`}
         src={imageUrl}
@@ -44,9 +47,14 @@ function MenuItem({ pizza }) {
             <p className="text-red-400  text-sm">Sold out</p>
           )}
 
-          <Button type="small" disabled={soldOut}>
-            Add to Cart
-          </Button>
+          <div className="flex flex-col items-center">
+            {itemQuantity !== 0 && (
+              <UpdateItemQuantity pizzaId={id} quantity={itemQuantity} />
+            )}
+            <Button onClick={clickHandler} type="small" disabled={soldOut}>
+              Add to Cart
+            </Button>
+          </div>
         </div>
       </div>
     </li>
