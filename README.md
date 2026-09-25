@@ -19,11 +19,11 @@ A modern pizza ordering web app built with **React**, **Redux Toolkit**, **React
 
 | Technology | Purpose |
 |------------|---------|
-| React | UI library |
-| Redux toolkit | Global state management |
-| React Router | Client-side routing & data loading |
-| Tailwind | Styling |
-| Vite | Build tool & dev server |
+| [React](https://react.dev/) | UI library |
+| [Redux Toolkit](https://redux-toolkit.js.org/) | Global state management |
+| [React Router](https://reactrouter.com/) | Client-side routing & data loading |
+| [Tailwind CSS](https://tailwindcss.com/) | Styling |
+| [Vite](https://vitejs.dev/) | Build tool & dev server |
 
 ---
 
